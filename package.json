@@ -1,0 +1,12 @@
+{
+  "name": "n8n-discord-ai-agent",
+  "version": "1.0.0",
+  "description": "Discord AI Agent for Nexa AI Suite - forwards Discord messages to n8n AI workflow",
+  "main": "discord-bot-forwarder.js",
+  "scripts": {
+    "start": "node discord-bot-forwarder.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.0"
+  }
+}

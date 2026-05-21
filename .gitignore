@@ -1,0 +1,9 @@
+node_modules/
+.env
+gerald-v2-workflow.json
+workflow-payload.json
+workflow-update.json
+workflow-full.json
+workflow-with-memory.json
+workflow-memory-only.json
+workflow-minimal.json
