@@ -3,6 +3,7 @@
 // Run: node discord-bot-forwarder.js
 
 const { Client, GatewayIntentBits } = require('discord.js');
+const http = require('http');
 
 // === CONFIGURATION ===
 // Use your Gerald bot token (same one configured in n8n credentials)
@@ -56,6 +57,15 @@ client.on('messageCreate', async (message) => {
   } catch (error) {
     console.error('Failed to forward message to n8n:', error.message);
   }
+});
+
+// Health check server for Render (keeps free tier alive)
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ status: 'ok', bot: client.user?.tag || 'connecting...' }));
+}).listen(PORT, () => {
+  console.log(`Health server on port ${PORT}`);
 });
 
 client.login(DISCORD_BOT_TOKEN);
